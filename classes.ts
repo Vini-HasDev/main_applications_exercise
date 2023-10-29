@@ -34,48 +34,57 @@
 
 /* Inicio Exercicio para FIXAÇÃO de interface MYINTERFACE */
 
-interface MyInteface {
-    myNumber: number,
-    myFunc(myParam: number): string,
-}
+// interface MyInteface {
+//     myNumber: number,
+//     myFunc(myParam: number): string,
+// }
 
-class myClass implements MyInteface {
-    constructor(public myNumber: number){ }
+// class myClass implements MyInteface {
+//     constructor(public myNumber: number){ }
 
-    myFunc(myParam: number): string {
-        return `myNumber + myParam: ${this.myNumber + myParam}`;
+//     myFunc(myParam: number): string {
+//         return `myNumber + myParam: ${this.myNumber + myParam}`;
+//     }
+// }
+
+// const object1 = new myClass(35);
+// console.log(object1.myFunc(22));
+// console.log(object1.myFunc(3));
+
+/* Agregação! Exercicio de FIXAÇÃO e afins */
+
+class Friend {
+    private _nickname: string | undefined;
+  
+    public getNickname(): string | undefined{
+      return this._nickname;
     }
-}
-
-const object1 = new myClass(35);
-console.log(object1.myFunc(22));
-console.log(object1.myFunc(3));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+    public setNickname(nickname: string) {
+      this._nickname = nickname;
+    }
+  }
+  
+  class SocialMediaAccount {
+    private friends = new Array<Friend>();
+  
+    public addFriend(friend: Friend) {
+      this.friends.push(friend);
+    }
+  
+    public printFriends() {
+      this.friends.map((friend) => console.log(friend));
+    }
+  }
+  
+  const socialMediaAccount = new SocialMediaAccount();
+  
+  const friendCarol = new Friend();
+  friendCarol.setNickname('Carol');
+  
+  const friendFernando = new Friend();
+  friendFernando.setNickname('Fernando');
+  
+  socialMediaAccount.addFriend(friendCarol);
+  socialMediaAccount.addFriend(friendFernando);
+  socialMediaAccount.printFriends();
